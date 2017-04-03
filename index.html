@@ -97,7 +97,7 @@
         function setupWin() {
           // Start Code - component code to be run before the window creation
           // Setup the Window
-          win = new psychoJS.visual.Window({size:[2560, 1440],
+          win = new psychoJS.visual.Window({size:[1280, 800],
               fullscr:true, screen:1.0,
               allowGUI:false, allowStencil:false,
               monitor:'testMonitor',
@@ -433,7 +433,7 @@
               t = 0;
               feedbackClock.reset(); // clock
               frameN = -1;
-              routineTimer.add(1.500000);
+              routineTimer.add(0.200000);
               // update component parameters for each repeat
               feedbackMsg.setText(feedbackText);
               // keep track of which components have finished
@@ -465,7 +465,7 @@
                   feedbackMsg.frameNStart = frameN;  // exact frame index
                   feedbackMsg.setAutoDraw(true);
                 }
-                frameRemains = 0.0 + 1.5 - frameDur * 0.75;  // most of one frame period left
+                frameRemains = 0.0 + 0.2 - frameDur * 0.75;  // most of one frame period left
                 if (feedbackMsg.status === psychoJS.STARTED && t >= frameRemains) {
                   feedbackMsg.setAutoDraw(false);
                 }
