@@ -72,8 +72,8 @@
           endExpNow = false; // flag for 'escape' or other condition => quit the exp
         
           // logging:
-          psychoJS.logging.console.setLevel(psychoJS.logging.WARNING);
-          psychoJS.logging.server.set({'level':psychoJS.logging.WARNING, 'saveTo':'EXPERIMENT_SERVER', 'experimentInfo': expInfo});
+          psychoJS.logging.console.setLevel(psychoJS.logging.DEBUG);
+          psychoJS.logging.server.set({'level':psychoJS.logging.DEBUG, 'saveTo':'EXPERIMENT_SERVER', 'experimentInfo': expInfo});
         
           return psychoJS.NEXT;
         }
