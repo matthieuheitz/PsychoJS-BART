@@ -466,7 +466,7 @@
             function finalScoreRoutineEnd() {
               //------Ending Routine 'finalScore'-------
               for (var i = 0; i < finalScoreComponents.length; ++i) {
-                thisComponent = trialComponents[i];
+                thisComponent = finalScoreComponents[i]; // TODO : Verify this
                 if ("setAutoDraw" in thisComponent) {
                   thisComponent.setAutoDraw(false);
                 }
@@ -563,7 +563,7 @@
               function feedbackRoutineEnd() {
                 //------Ending Routine 'feedback'-------
                 for (var i = 0; i < feedbackComponents.length; ++i) {
-                  thisComponent = trialComponents[i];
+                  thisComponent = feedbackComponents[i]; // TODO : verify this
                   if ("setAutoDraw" in thisComponent) {
                     thisComponent.setAutoDraw(false);
                   }
@@ -663,7 +663,7 @@
                 function instructionsRoutineEnd() {
                   //------Ending Routine 'instructions'-------
                   for (var i = 0; i < instructionsComponents.length; ++i) {
-                    thisComponent = trialComponents[i];
+                    thisComponent = instructionsComponents[i];
                     if ("setAutoDraw" in thisComponent) {
                       thisComponent.setAutoDraw(false);
                     }
