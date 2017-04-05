@@ -241,6 +241,7 @@
             if (balloonBody.status == psychoJS.STARTED){ // only update if being drawn
               balloonBody.setPos([-1+balloonSize/2, 0]);
               balloonBody.setSize(balloonSize);
+              balloonBody._updateIfNeeded();
             }
             
             // *reminderMsg* updates
@@ -262,6 +263,7 @@
             thisBalloonEarnings=nPumps*0.05;
             if (balloonValMsg.status == psychoJS.STARTED){ // only update if being drawn
               balloonValMsg.setText("This balloon value:\n " + thisBalloonEarnings);
+              balloonValMsg._updateIfNeeded();
             }
             
             // *bankedMsg* updates
@@ -273,6 +275,7 @@
             }
             if (bankedMsg.status == psychoJS.STARTED){ // only update if being drawn
               bankedMsg.setText("You have banked:\n " + bankedEarnings);
+              bankedMsg._updateIfNeeded();
             }
             
             // *bankButton* updates
