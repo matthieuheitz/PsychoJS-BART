@@ -70,6 +70,17 @@
                                 });
         
           endExpNow = false; // flag for 'escape' or other condition => quit the exp
+
+          // Variables that should be there
+          // updateEarnings
+          bankedEarnings=0.0
+          lastBalloonEarnings=0.0
+          thisBalloonEarnings=0.0
+          // setBalloonSize
+          balloonSize=0.08
+          balloonMsgHeight=0.01
+          // checkPopped
+          feedbackText=""
         
           // logging:
           psychoJS.logging.console.setLevel(psychoJS.logging.DEBUG);
@@ -200,6 +211,10 @@
               thisComponent.status = psychoJS.NOT_STARTED;
             }
           }
+          // setBalloonSize
+          balloonSize=0.08
+          popped=false
+          nPumps=0
           
           return psychoJS.NEXT;
           }
@@ -220,6 +235,8 @@
               balloonBody.frameNStart = frameN;  // exact frame index
               balloonBody.setAutoDraw(true);
             }
+            // setBalloonSize
+            balloonSize=0.1+nPumps*0.015;
             if (balloonBody.status == STARTED){ // only update if being drawn
               balloonBody.setPos([-1+balloonSize/2, 0]);
               balloonBody.setSize(balloonSize);
@@ -240,6 +257,8 @@
               balloonValMsg.frameNStart = frameN;  // exact frame index
               balloonValMsg.setAutoDraw(true);
             }
+            //updateEarnings
+            thisBalloonEarnings=nPumps*0.05;
             if (balloonValMsg.status == STARTED){ // only update if being drawn
               balloonValMsg.setText(u"This balloon value:\n %.2f" %thisBalloonEarnings);
             }
@@ -311,6 +330,22 @@
                 thisComponent.setAutoDraw(false);
               }
             }
+
+            if(popped) {
+              thisBalloonEarnings = 0.0;
+              lastBalloonEarnings = 0.0;
+            }
+            else {
+              lastBalloonEarnings = thisBalloonEarnings;
+              bankedEarnings = bankedEarnings + lastBalloonEarnings;
+            }
+
+            // TODO : Save results
+            // trials.addData('nPumps', nPumps)
+            // trials.addData('size', balloonSize)
+            // trials.addData('earnings', thisBalloonEarnings)
+            // trials.addData('popped', popped)
+
             // the Routine "trial" was not non-slip safe, so reset the non-slip timer
             routineTimer.reset();
             return psychoJS.NEXT;
@@ -445,6 +480,13 @@
                   thisComponent.status = psychoJS.NOT_STARTED;
                 }
               }
+              if(popped == true) {
+                feedbackText = "Oops! Lost that one!"
+              }
+              else {
+                feedbackText = "You banked " + lastBalloonEarnings
+              }
+
               
               return psychoJS.NEXT;
               }
