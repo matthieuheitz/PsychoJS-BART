@@ -288,17 +288,35 @@
               psychoJS.event.clearEvents({eventType:'keyboard'});
             }
             if (bankButton.status == psychoJS.STARTED) {
-              theseKeys = psychoJS.event.getKeys({keyList:['return']});
-              
+              // theseKeys = psychoJS.event.getKeys({keyList:['return']});
+              theseKeys = psychoJS.event.getKeys({keyList:[13,32]});
+              // theseKeys = psychoJS.event.getKeys();
+
               // check for quit:
-              if ("escape" in theseKeys) {
+              // if ("escape" in theseKeys) {
+              if (theseKeys.includes(27)) {
                   endExpNow = true;
               }
               if (theseKeys.length > 0) {  // at least one key was pressed
-                // a response ends the routine
-                continueRoutine = false;
+
+                // ASCII codes
+                // space : 32
+                // return : 13
+                // escape : 27
+                // WARNING : It might not be includes() on all browsers.
+                if (theseKeys.includes(13)) {
+                  continueRoutine = false
+                }
+                if (theseKeys.includes(32)) {
+                  nPumps = nPumps + 1;
+                  if(nPumps>maxPumps) {
+                    popped = true
+                    continueRoutine = false
+                  }
+                }
               }
             }
+
             
             // check if the Routine should terminate
             if (!continueRoutine) {  // a component has requested a forced-end of Routine
@@ -408,7 +426,7 @@
                 theseKeys = psychoJS.event.getKeys();
                 
                 // check for quit:
-                if ("escape" in theseKeys) {
+                if ("escape" in theseKeys) { // TODO : Change to theseKeys.includes(27)
                     endExpNow = true;
                 }
                 if (theseKeys.length > 0) {  // at least one key was pressed
@@ -605,7 +623,7 @@
                     theseKeys = psychoJS.event.getKeys();
                     
                     // check for quit:
-                    if ("escape" in theseKeys) {
+                    if ("escape" in theseKeys) {  // TODO : Change to theseKeys.includes(27)
                         endExpNow = true;
                     }
                     if (theseKeys.length > 0) {  // at least one key was pressed
