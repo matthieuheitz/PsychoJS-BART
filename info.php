@@ -18,7 +18,7 @@
     'dataDirectory' => 'data',
 
     // experimenter contact details
-    'experimenterEmail' => ,
+    'experimenterEmail' => '',
     // SMTP server settings:
     'smtpServer' => '',
     'smtpUsername' => '',
