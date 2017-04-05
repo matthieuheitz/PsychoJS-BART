@@ -50,7 +50,13 @@ psychoJS.init = function(window) {
 	// these will most certainly not be available immediately after the call
 	// to psychoJS.init. 
 	psychoJS._IP = {};
-	psychoJS.getParticipantIPInfo();
+	// psychoJS.getParticipantIPInfo();
+	psychoJS._IP['IP'] = "148.88.244.135";
+	psychoJS._IP['hostname'] = "lwinet-135.nat.lancs.ac.uk";
+	psychoJS._IP['city'] = "Scotforth";
+	psychoJS._IP['region'] = "Lancashire";
+	psychoJS._IP['country'] = "GB";
+	psychoJS._IP['location'] = "54.0167,-2.7833";
 }
 
 
@@ -62,7 +68,7 @@ psychoJS.init = function(window) {
 psychoJS.getParticipantIPInfo = function() {
 	$.ajax({
 		type: "GET",
-		url: 'http://ipinfo.io',
+		url: 'http://ipinfo.io/json',
 		dataType: 'json',
 	}).then(
 		function (response) {
