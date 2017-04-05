@@ -490,7 +490,8 @@
               t = 0;
               feedbackClock.reset(); // clock
               frameN = -1;
-              routineTimer.add(0.200000);
+              timerTime = 0.5;
+              routineTimer.add(timerTime);
               // update component parameters for each repeat
               feedbackMsg.setText(feedbackText);
               // keep track of which components have finished
@@ -529,7 +530,7 @@
                   feedbackMsg.frameNStart = frameN;  // exact frame index
                   feedbackMsg.setAutoDraw(true);
                 }
-                frameRemains = 0.0 + 0.2 - frameDur * 0.75;  // most of one frame period left
+                frameRemains = 0.0 + timerTime - frameDur * 0.75;  // most of one frame period left
                 if (feedbackMsg.status === psychoJS.STARTED && t >= frameRemains) {
                   feedbackMsg.setAutoDraw(false);
                 }
