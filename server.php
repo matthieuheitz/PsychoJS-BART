@@ -1,4 +1,7 @@
 <?php
+	ini_set('display_errors', 'On');
+	error_reporting(E_ALL | E_STRICT);
+
 	require 'php/vendors/phpmailer/class.phpmailer.php';
 	require 'php/vendors/phpmailer/class.smtp.php';
 	require 'php/vendors/phpmailer/class.pop3.php';
