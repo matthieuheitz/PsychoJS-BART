@@ -54,7 +54,7 @@ function buttonClickedSendID() {
 
 	var pID = document.getElementById("id_number").value;
 	// If ID entered is invalid
-	if( pID == "" || pID < 0 || pID > 300 ) {
+	if( pID == "" || pID < 0 || pID > 300 || isNaN(pID)) {
 		alert("Incorrect ID number. Please re-enter it.");
 	}
 	// If ID is valid, go to next part
