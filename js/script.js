@@ -16,6 +16,22 @@ var totalNumBalloons = 4;
 //     console.log( "ready!" );
 // });
 
+
+
+function GetKey(event){
+	var space = 32;
+	var backspace = 8;
+	console.log(event.keyCode);
+	if (event.keyCode == space){
+ 		buttonClickedPumpBalloon();
+	}
+	else if (event.keyCode == backspace){
+ 		buttonClickedCollectMoney();
+	}
+}
+
+
+
 $( document ).ready(start);
 
 function start() {
@@ -64,6 +80,7 @@ function buttonClickedPumpBalloon() {
 		currentBalloonEarning += pumpIncrement;
 		updateGameUI();
 	} else {
+		alert("Boom");
 		balloonExploded = true;
 		currentBalloonEarning = 0;
 		balloonFinished();
@@ -76,13 +93,8 @@ function buttonClickedCollectMoney() {
 }
 
 function balloonFinished() {
-	document.getElementById("img_balloon").style.display = 'none';
-	document.getElementById("game_balloon_final_earning").innerHTML = "You have earned $" + currentBalloonEarning + " total for this balloon.";
-	document.getElementById("game_balloon_final_earning").style.display = 'block';
-	// Temporization to let the person see the text of #game_balloon_final_earning
-	setTimeout(function(){return true;},2000); // TODO : It does't work, other solution ?
-	document.getElementById("img_balloon").style.display = 'block';
-	document.getElementById("game_balloon_final_earning").style.display = 'none';
+	alert("You have earned $" + currentBalloonEarning + " total for this balloon.");
+
 
 
 	if(++balloonIndex <= totalNumBalloons) {
