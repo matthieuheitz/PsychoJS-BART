@@ -11,7 +11,10 @@ var numPumps = 0;
 var balloonExploded = false;
 var balloonIndex = 1;
 var totalNumBalloons = 4;
-
+var start_time;
+var end_time;
+var task_completed=0;
+var data2send;
 // $( document ).ready(function() {
 //     console.log( "ready!" );
 // });
@@ -21,7 +24,7 @@ var totalNumBalloons = 4;
 function GetKey(event){
 	var space = 32;
 	var backspace = 8;
-	console.log(event.keyCode);
+
 	if (event.keyCode == space){
  		buttonClickedPumpBalloon();
 	}
@@ -63,6 +66,7 @@ function buttonClickedSendID() {
 function buttonClickedStartGame() {
 	// Start the balloon game
 	setBalloonInitialState();
+	start_time = new Date();
 	displayPart3();
 }
 
@@ -110,6 +114,8 @@ function balloonFinished() {
 
 function buttonClickedEndGame() {
 	// TODO : If those two functions take time, make a wait screen
+	end_time = new Date();
+	task_completed = 1;
 	prepareDataToSend();
 	sendData();
 	displayPart4();
@@ -119,14 +125,38 @@ function prepareDataToSend() {
 	// Data needed to be sent :
 	// 
 	// Date of the day
+	console.log("date: " + start_time.getDay() +"/" + start_time.getMonth() + "/" + start_time.getFullYear() );
+	data2send = start_time.getDay() +"/" + start_time.getMonth() + "/" + start_time.getFullYear() + ";";
+
 	// start_time
+	console.log("start time :" + start_time.getHours() + ":" + start_time.getMinutes() + ":" + start_time.getSeconds());
+	data2send += start_time.getHours() + ":" + start_time.getMinutes() + ":" + start_time.getSeconds() + ";";
+
 	// end_time
+	console.log("end time :" + end_time.getHours() + ":" + end_time.getMinutes() + ":" + end_time.getSeconds());
+	data2send += end_time.getHours() + ":" + end_time.getMinutes() + ":" + end_time.getSeconds() + ";";
+
 	// task_completed (0 or 1)
+	console.log("task : " + task_completed);
+
 	// ID number
+	console.log("ID : " + pID);
+	data2send += pID;
+
 }
 
 function sendData() {
-
+	$.ajax({
+	 type: "POST",
+	 url: "write.php",
+	 data: { data : data2send },
+	 success: function(msg){
+	     alert(msg);
+	 },
+	 error: function(XMLHttpRequest, textStatus, errorThrown) {
+	    alert("Some error occured");
+	 }
+	 });
 }
 
 function displayPart1() {
