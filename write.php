@@ -1,7 +1,7 @@
 <?PHP
 $filename = 'log.txt';
 
-@ $fp = fopen($filename, 'wb');
+@ $fp = fopen($filename, 'a+');
 if (!$fp)
 {
     echo 'Cannot generate message file';
@@ -9,7 +9,7 @@ if (!$fp)
 } 
 else
 {
-fwrite($fp, $_POST["data"]);
+fwrite($fp, $_POST["data"] . "\n");
 Echo "Message send";
 }
 ?>
