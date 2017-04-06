@@ -25,10 +25,10 @@ function GetKey(event){
 	var space = 32;
 	var backspace = 8;
 
-	if (event.keyCode == space){
+	if (event.keyCode == space && document.getElementById("game").style.display == 'block'){
  		buttonClickedPumpBalloon();
 	}
-	else if (event.keyCode == backspace){
+	else if (event.keyCode == backspace && document.getElementById("game").style.display == 'block'){
  		buttonClickedCollectMoney();
 	}
 }
