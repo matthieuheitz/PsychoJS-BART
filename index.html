@@ -36,16 +36,17 @@
     </head>
 
     <body>
-
       <h1>The Balloon Game</h1>
 
-      <div id="setup">
-
-        <!-- TODO : Way to make sure the participant enters it without mistakes -->
-        Please enter your ID number:
+      <div id="setup" class="container-fluid">
 
         <div class="row">
-          <div class="col-lg-6">
+         <div class="col-md-4"></div>
+
+        <!-- TODO : Way to make sure the participant enters it without mistakes -->
+          <div class="col-md-4">
+                    Please enter your ID number:
+
             <div class="input-group">
               <input type="text" class="form-control" placeholder="Your Id ..." id="id_number">
               <span class="input-group-btn">
@@ -59,79 +60,74 @@
 
 
 
-      <h2 id="instructions">
+      <div id="instructions" class="row">
 
-        In this game, you will be shown 30 balloons, one at a time. For each balloon, you can click the mouse button to inflate each balloon. Each balloon has a ‘maximum inflation’ point after which filling it will cause it to burst. You earn money in the game as the balloon inflates but only ‘bank’ money in the game if you stop filling the balloon before it explodes. You are in control of how much each balloon is inflated.
+           <div class="col-md-4"></div>
+          <div class="col-md-4">
+            <p>In this game, you will be shown 30 balloons, one at a time. For each balloon, you can click the mouse button to inflate each balloon. Each balloon has a ‘maximum inflation’ point after which filling it will cause it to burst. You earn money in the game as the balloon inflates but only ‘bank’ money in the game if you stop filling the balloon before it explodes. You are in control of how much each balloon is inflated.
 
         Although you will not actually receive the money at the end of the game, we would like you to try your best in the game! 
 
-        Click on the button to proceed.
-
-        <div class="row">
-          <div class="col-lg-6">
+        Click on the button to proceed.</p>
             <div class="input-group">
               <span class="input-group-btn">
                 <button class="btn btn-default" type="button" id="start_game" onclick="buttonClickedStartGame()">Let's Go</button>
               </span>
-            </div><!-- /input-group -->
-          </div><!-- /.col-lg-6 -->
-        </div><!-- /.row -->
+            </div>
+        </div>
 
 
-      </h2>
+      </div>
 
-      <div id="game">
+      <div id="game" class="row">
+           <div class="col-md-4"></div>
 
         <!-- the game loops -->
-        <div id="game_balloon">
+        <div id="game_balloon" class="col-md-4">
 
           <div id="game_total_current_earning"></div>
-          <div id="game_money_per_pump"> Earning per pump : <!-- insert a javascript variable : just need to display it once because it doesn't change --> $ </div> 
+          <div id="game_money_per_pump"> Earning per pump : <b id="earning_by_pump"></b> $ </div> 
           <div id="game_current_balloon_earning"></div>
 
           <div class="row">
-            <div class="col-lg-6">
+            <div class="col-md-4">
               <div class="input-group">
                 <span class="input-group-btn">
                   <!-- TODO : Ideally, it would be nice to have the 'space bar' and 'return' keys to do those actions. -->
                   <button class="btn btn-default" type="button" onclick="buttonClickedPumpBalloon()" >Pump</button>
                   <button class="btn btn-default" type="button" onclick="buttonClickedCollectMoney()" >Collect $$</button>
                 </span>
-              </div><!-- /input-group -->
-            </div><!-- /.col-lg-6 -->
-          </div><!-- /.row -->
+              </div>
+            </div>
+          </div>
 
           <img src="img/balloon.png" alt="Balloon Image" id="img_balloon" style="width:50px;height:50px;">
           <div id="game_balloon_final_earning"></div>
 
         </div>
 
-        <div id="game_final_screen">
-
-          <div id="game_final_earning"></div>
-
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="input-group">
+        <div id="game_final_screen" class="col-md-4">
+              <div id="game_final_earning"></div>
+                <div class="input-group">
                 <span class="input-group-btn">
                   <button class="btn btn-default" type="button" onclick="buttonClickedEndGame()" >Finish</button>
                 </span>
-              </div><!-- /input-group -->
-            </div><!-- /.col-lg-6 -->
-          </div><!-- /.row -->
+                </div>
+               </div>
 
         </div>
 
-      </div>
 
+      <div id="thankYou" class="row">
+                   <div class="col-md-4"></div>
+           <div class="col-md-4">
 
-
-      <div id="thankYou">
-        Thank you for participating!
+        <p><h3>Thank you for participating!</h3>
         Please follow this link back to the survey to make sure your results are saved properly.
-        <a href="http://bit.ly/1DVFJ4Q"> Go back to survey </a>
+        <a href="http://bit.ly/1DVFJ4Q"> Go back to survey </a></p>
+      </div>
       </div>
 
-
+    </div>
     </body>
   </html>
