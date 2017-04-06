@@ -54,6 +54,7 @@ function updateGameUI() {
 	var image = document.getElementById("img_balloon");
 	image.style.width = Math.round( screen.width * (5 + numPumps) / 100.0)+'px';
 	image.style.height = 'auto';
+	document.getElementById("earning_by_pump").innerHTML = pumpIncrement;
 	document.getElementById("game_total_current_earning").innerHTML = "Total earnings : $" + totalcurrentEarning;
 	document.getElementById("game_current_balloon_earning").innerHTML = "Current earnings : $" + currentBalloonEarning;
 }
