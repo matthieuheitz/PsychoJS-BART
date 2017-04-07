@@ -83,7 +83,7 @@ function setBalloonInitialState() {
 
 function buttonClickedSendID() {
 
-	var pID = document.getElementById("id_number").value;
+	pID = document.getElementById("id_number").value;
 	// If ID entered is invalid
 	if( pID == "" || pID < 0 || pID > 300 || isNaN(pID)) {
 		alert("Incorrect ID number. Please re-enter it.");
@@ -104,7 +104,7 @@ function buttonClickedStartGame() {
 function updateGameUI() {
 	var image = document.getElementById("img_balloon");
 	image.src = "img/" + balloonImage;
-	image.style.width = Math.round( screen.width * (5 + numPumps) / 100.0)+'px';
+	image.style.width = Math.round( screen.width * (5 + numPumps) / (5.0 + 128.0)) +'px';
 	image.style.height = 'auto';
 	// document.getElementById("earning_by_pump").innerHTML = "Max pumps = " + maxPumps + ", trialTypeIndex = " + trialTypeIndex;
 	document.getElementById("game_total_current_earning").innerHTML = "Total earned : $" + totalcurrentEarning;
