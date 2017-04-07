@@ -1,16 +1,26 @@
 // Configure the game
 
 var pID = 0;
+// Earnings
 var totalcurrentEarning = 0;
 var totalFinalEarning = 0;
 var currentBalloonEarning = 0;
-var pumpIncrement = 1;
-var maxPump = 20;
+var lastBalloonEarning = 0;
+var earningPerPump = 0.75;
+// Random process
+var numOfTrialTypes = 3;
+var maxRandList = [8, 32, 128];
+var maxRand;
+var balloonImageList = ["blueBalloon.png", "redBalloon.png", "greenBalloon.png"];
+var balloonImage;
+var trialList = [];
+var numOfTrials = 6;
+var trialTypeIndex;
+var trialIndex = 1;
+// Balloons
+var maxPumps;
 var balloonExploded = false;
 var numPumps = 0;
-var balloonExploded = false;
-var balloonIndex = 1;
-var totalNumBalloons = 4;
 var start_time;
 var end_time;
 var task_completed=0;
@@ -32,6 +42,14 @@ var data2send;
 //  		buttonClickedCollectMoney();
 // 	}
 // }
+
+
+// Pre-condition : a should be less than b
+function randInt(a,b) { return Math.floor((Math.random() * b) + a); }
+
+function populateTrialList() {
+	for (i = 0; i < numOfTrials; i++) {
+		trialList.push(Math.floor(i*numOfTrialTypes/numOfTrials));
 	}
 }
 
@@ -41,11 +59,22 @@ $( document ).ready(start);
 
 function start() {
 	console.log( "ready" );
+	populateTrialList();
 
 	displayPart1();
 }
 
 function setBalloonInitialState() {
+	// Random process without replacement to choose the trial type
+	var i = randInt(0,trialList.length-1);
+	trialTypeIndex = trialList[i];
+	trialList.splice(i,1);
+	// Get trial variables
+	maxRand = maxRandList[trialTypeIndex];
+	balloonImage = balloonImageList[trialTypeIndex];
+	// Random process with replacement to choose the max of pump for that balloon
+	maxPumps = randInt(1,maxRand);
+
 	currentBalloonEarning = 0;
 	numPumps = 0;
 	balloonExploded = false;
@@ -74,16 +103,17 @@ function buttonClickedStartGame() {
 
 function updateGameUI() {
 	var image = document.getElementById("img_balloon");
+	image.src = "img/" + balloonImage;
 	image.style.width = Math.round( screen.width * (5 + numPumps) / 100.0)+'px';
 	image.style.height = 'auto';
-	document.getElementById("earning_by_pump").innerHTML = pumpIncrement;
-	document.getElementById("game_total_current_earning").innerHTML = "Total earnings : $" + totalcurrentEarning;
-	document.getElementById("game_current_balloon_earning").innerHTML = "Current earnings : $" + currentBalloonEarning;
+	// document.getElementById("earning_by_pump").innerHTML = "Max pumps = " + maxPumps + ", trialTypeIndex = " + trialTypeIndex;
+	document.getElementById("game_total_current_earning").innerHTML = "Total earned : $" + totalcurrentEarning;
+	document.getElementById("game_last_balloon_earning").innerHTML = "Last balloon : $" + lastBalloonEarning;
 }
 
 function buttonClickedPumpBalloon() {
-	if(++numPumps <= maxPump) {
-		currentBalloonEarning += pumpIncrement;
+	if(++numPumps <= maxPumps) {
+		currentBalloonEarning += earningPerPump;
 		updateGameUI();
 	} else {
 		alert("Boom");
@@ -95,15 +125,14 @@ function buttonClickedPumpBalloon() {
 
 function buttonClickedCollectMoney() {
 	totalcurrentEarning += currentBalloonEarning;
+	lastBalloonEarning = currentBalloonEarning;
 	balloonFinished();
 }
 
 function balloonFinished() {
 	alert("You have earned $" + currentBalloonEarning + " total for this balloon.");
 
-
-
-	if(++balloonIndex <= totalNumBalloons) {
+	if(++trialIndex <= numOfTrials) {
 		buttonClickedStartGame();
 	}
 	else {
