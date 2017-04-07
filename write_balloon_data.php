@@ -9,7 +9,7 @@ if (!$fp)
 } 
 else
 {
-	fwrite($fp, $_POST["data"] . "\n");
+	fwrite($fp, $_POST["data"]);
 	echo "The data has been sent.";
 }
 ?>
