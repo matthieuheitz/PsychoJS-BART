@@ -167,7 +167,6 @@ function appendBalloonDataToIndividualBuffer() {
 	balloondata2send += pID + ",";
 	balloondata2send += trialIndex + ",";
 	balloondata2send += maxRand + ",";
-	balloondata2send += balloonImage + ",";
 	balloondata2send += maxPumps + ",";
 	balloondata2send += numPumps + ",";
 	balloondata2send += balloonExploded + ",";
