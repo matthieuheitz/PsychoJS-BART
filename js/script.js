@@ -208,7 +208,7 @@ function sendOverallData() {
 	 url: "write_overall_data.php",
 	 data: { data : overalldata2send },
 	 success: function(msg){
-	     alert(msg);
+	     if(msg != "") alert(msg);
 	 },
 	 error: function(XMLHttpRequest, textStatus, errorThrown) {
 	    alert("Some error occured");
@@ -222,7 +222,7 @@ function sendBalloonData() {
 	 url: "write_balloon_data.php",
 	 data: { data : balloondata2send },
 	 success: function(msg){
-	     alert(msg);
+	     if(msg != "") alert(msg);
 	 },
 	 error: function(XMLHttpRequest, textStatus, errorThrown) {
 	    alert("Some error occured");
