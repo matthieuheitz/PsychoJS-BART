@@ -21,15 +21,17 @@ var data2send;
 
 
 
-function GetKey(event){
-	var space = 32;
-	var backspace = 8;
+// function GetKey(event){
+// 	var key_space = 32;
+// 	var key_return = 13;
 
-	if (event.keyCode == space && document.getElementById("game").style.display == 'block'){
- 		buttonClickedPumpBalloon();
-	}
-	else if (event.keyCode == backspace && document.getElementById("game").style.display == 'block'){
- 		buttonClickedCollectMoney();
+// 	if (event.keyCode == key_space && document.getElementById("game").style.display == 'block'){
+//  		buttonClickedPumpBalloon();
+// 	}
+// 	else if (event.keyCode == key_return && document.getElementById("game").style.display == 'block'){
+//  		buttonClickedCollectMoney();
+// 	}
+// }
 	}
 }
 
