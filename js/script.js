@@ -21,13 +21,17 @@ var trialIndex = 1;
 var maxPumps;
 var balloonExploded = false;
 var numPumps = 0;
-var start_time;
-var end_time;
+//  Data to send
+var overalldata2send = "";
+var balloondata2send = "";
+// Time, latency
+var experiment_start_time;
+var experiment_end_time;
+var balloon_start_time; // TODO
+var balloon_end_time; // TODO
+
+// Others
 var task_completed=0;
-var data2send;
-// $( document ).ready(function() {
-//     console.log( "ready!" );
-// });
 
 
 
@@ -97,7 +101,8 @@ function buttonClickedSendID() {
 function buttonClickedStartGame() {
 	// Start the balloon game
 	setBalloonInitialState();
-	start_time = new Date();
+	experiment_start_time = new Date();
+
 	displayPart3();
 }
 
@@ -131,6 +136,7 @@ function buttonClickedCollectMoney() {
 
 function balloonFinished() {
 	alert("You have earned $" + currentBalloonEarning + " total for this balloon.");
+	appendBalloonDataToIndividualBuffer();
 
 	if(++trialIndex <= numOfTrials) {
 		buttonClickedStartGame();
@@ -144,43 +150,77 @@ function balloonFinished() {
 }
 
 function buttonClickedEndGame() {
-	// TODO : If those two functions take time, make a wait screen
-	end_time = new Date();
+	experiment_end_time = new Date();
 	task_completed = 1;
-	prepareDataToSend();
-	sendData();
+
+	// Send the data on the server
+	sendBalloonData();
+	prepareOverallDataToSend();
+	sendOverallData();
+
 	displayPart4();
 }
 
-function prepareDataToSend() {
-	// Data needed to be sent :
-	// 
-	// Date of the day
-	console.log("date: " + start_time.getDay() +"/" + start_time.getMonth() + "/" + start_time.getFullYear() );
-	data2send = start_time.getDay() +"/" + start_time.getMonth() + "/" + start_time.getFullYear() + ";";
 
-	// start_time
-	console.log("start time :" + start_time.getHours() + ":" + start_time.getMinutes() + ":" + start_time.getSeconds());
-	data2send += start_time.getHours() + ":" + start_time.getMinutes() + ":" + start_time.getSeconds() + ";";
+function appendBalloonDataToIndividualBuffer() {
+	// Data regarding one balloon
+	balloondata2send += pID + ",";
+	balloondata2send += trialIndex + ",";
+	balloondata2send += maxRand + ",";
+	balloondata2send += balloonImage + ",";
+	balloondata2send += maxPumps + ",";
+	balloondata2send += numPumps + ",";
+	balloondata2send += balloonExploded + ",";
+	balloondata2send += currentBalloonEarning + ",";
+	balloondata2send += totalcurrentEarning + "\n";
+}
 
-	// end_time
-	console.log("end time :" + end_time.getHours() + ":" + end_time.getMinutes() + ":" + end_time.getSeconds());
-	data2send += end_time.getHours() + ":" + end_time.getMinutes() + ":" + end_time.getSeconds() + ";";
-
-	// task_completed (0 or 1)
-	console.log("task : " + task_completed);
+function prepareOverallDataToSend() {
 
 	// ID number
 	console.log("ID : " + pID);
-	data2send += pID;
+	overalldata2send += pID + ",";
 
+	// Start date
+	console.log("start date: " + experiment_start_time.getDay() +"/" + experiment_start_time.getMonth() + "/" + experiment_start_time.getFullYear() );
+	overalldata2send += experiment_start_time.getDay() +"/" + experiment_start_time.getMonth() + "/" + experiment_start_time.getFullYear() + ",";
+
+	// End date
+	console.log("end date: " + experiment_end_time.getDay() +"/" + experiment_end_time.getMonth() + "/" + experiment_end_time.getFullYear() );
+	overalldata2send += experiment_end_time.getDay() +"/" + experiment_end_time.getMonth() + "/" + experiment_end_time.getFullYear() + ",";
+
+	// experiment_start_time
+	console.log("start time :" + experiment_start_time.getHours() + ":" + experiment_start_time.getMinutes() + ":" + experiment_start_time.getSeconds());
+	overalldata2send += experiment_start_time.getHours() + ":" + experiment_start_time.getMinutes() + ":" + experiment_start_time.getSeconds() + ",";
+
+	// experiment_end_time
+	console.log("end time :" + experiment_end_time.getHours() + ":" + experiment_end_time.getMinutes() + ":" + experiment_end_time.getSeconds());
+	overalldata2send += experiment_end_time.getHours() + ":" + experiment_end_time.getMinutes() + ":" + experiment_end_time.getSeconds() + ",";
+
+	// task_completed (0 or 1)
+	console.log("task : " + task_completed);
+	overalldata2send += task_completed + "\n";
 }
 
-function sendData() {
+function sendOverallData() {
 	$.ajax({
 	 type: "POST",
-	 url: "write.php",
-	 data: { data : data2send },
+	 url: "write_overall_data.php",
+	 data: { data : overalldata2send },
+	 success: function(msg){
+	     alert(msg);
+	 },
+	 error: function(XMLHttpRequest, textStatus, errorThrown) {
+	    alert("Some error occured");
+	 }
+	 });
+}
+
+function sendBalloonData() {
+	$.ajax({
+	 type: "POST",
+	 url: "write_balloon_data.php",
+	 data: { data : balloondata2send },
 	 success: function(msg){
 	     alert(msg);
 	 },
