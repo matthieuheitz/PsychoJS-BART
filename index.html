@@ -63,25 +63,44 @@
 
       <div id="instructions" class="row">
 
-           <div class="col-md-4"></div>
-          <div class="col-md-4">
-            <p>In this game, you will be shown 30 balloons, one at a time. For each balloon, you can click the mouse button to inflate each balloon. Each balloon has a ‘maximum inflation’ point after which filling it will cause it to burst. You earn money in the game as the balloon inflates but only ‘bank’ money in the game if you stop filling the balloon before it explodes. You are in control of how much each balloon is inflated.
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
 
-        Although you will not actually receive the money at the end of the game, we would like you to try your best in the game! 
+            <p>
+            Throughout this game, you will be presented with 60 balloons, one at a time. For each balloon you can click on the button labeled “Pump" to increase the size of the balloon. 
+            </p>
+            <p>
+            You will accumulate 75 cents in a temporary bank for each pump. You will not be shown the amount you have accumulated in your temporary bank.  
+            </p>
+            <p>
+            At any point, you can stop pumping up the balloon and click on the button labeled “Collect $$$.” Clicking this button will start you on the next balloon and will transfer the accumulated money from your temporary bank to your permanent bank labeled “Total Earned.” The amount you earned on the previous balloon is shown in the box labeled “Last Balloon.”
+            </p>
+            <p>
+            It is your choice to determine how much to pump up the balloon, but be aware, that at some point, the balloon will explode. The explosion point varies across balloons, ranging from the first pump to enough pumps to make the balloon fill the entire computer screen. 
+            </p>
+            <p>
+            If the balloon explodes before you click on “Collect $$$,” then you move on to the next balloon and all money in your temporary bank is lost. Exploded balloons do not affect the money accumulated in your permanent bank. 
+            </p>
+            <p>
+            Although you will not be receiving any money for completing this task, please do your best to earn as much as possible! 
+            </p>
+            <p>
+            Click on the button to proceed.
+            </p>
 
-        Click on the button to proceed.</p>
             <div class="input-group">
               <span class="input-group-btn">
-                <button class="btn btn-default" type="button" id="start_game" onclick="buttonClickedStartGame()">Let's Go</button>
+                <button class="btn btn-default" type="button" id="start_game" onclick="buttonClickedStartGame()">Next</button>
               </span>
             </div>
         </div>
-
+        <div class="col-md-3"></div>
 
       </div>
 
+
       <div id="game" class="row">
-           <div class="col-md-4"></div>
+        <div class="col-md-4"></div>
 
         <!-- the game loops -->
         <div id="game_balloon" class="col-md-4">
