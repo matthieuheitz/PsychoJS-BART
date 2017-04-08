@@ -109,9 +109,9 @@ function buttonClickedStartGame() {
 function updateGameUI() {
 	var image = document.getElementById("img_balloon");
 	image.src = "img/" + balloonImage;
-	image.style.width = Math.round( screen.width * (5 + numPumps) / (5.0 + 128.0)) +'px';
-	image.style.height = 'auto';
-	// document.getElementById("earning_by_pump").innerHTML = "Max pumps = " + maxPumps + ", trialTypeIndex = " + trialTypeIndex;
+	image.style.width = 'auto';
+	image.style.height = Math.round( 2.0/3.0 * screen.height * (5 + numPumps) / (5.0 + 128.0)) +'px';
+	// document.getElementById("earning_by_pump").innerHTML = "Max pumps = " + maxPumps + ", numPumps = " + numPumps;
 	document.getElementById("game_total_current_earning").innerHTML = "Total earned : $" + totalcurrentEarning;
 	document.getElementById("game_last_balloon_earning").innerHTML = "Last balloon : $" + lastBalloonEarning;
 }
