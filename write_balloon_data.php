@@ -10,6 +10,6 @@ if (!$fp)
 else
 {
 	fwrite($fp, $_POST["data"]);
-	echo "The data has been sent.";
+	// echo "The data has been sent.";
 }
 ?>

@@ -37,7 +37,20 @@
 
     <!-- <body onkeydown="GetKey(event)"> -->
     <body>
-      <h1>The Balloon Game</h1>
+      <div id="title" class="row">
+        <div class="col-md-6">
+          <h1>The Balloon Game</h1>
+        </div>
+        <!-- <div class="col-md-7"></div> -->
+        <div class="col-md-6" align="right">
+          <a href="#" id="exit_game" onclick="buttonClickedExitGame()"> Exit </a>
+<!--             <div class="input-group">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button" id="exit_game" onclick="buttonClickedExitGame()">Exit</button>
+              </span>
+            </div> -->
+        </div>
+      </div>
 
       <div id="setup" class="container-fluid">
 
@@ -130,7 +143,7 @@
               <div id="game_final_earning"></div>
                 <div class="input-group">
                 <span class="input-group-btn">
-                  <button class="btn btn-default" type="button" onclick="buttonClickedEndGame()" >Finish</button>
+                  <button class="btn btn-default" type="button" onclick="buttonClickedFinishExperiment()" >Finish</button>
                 </span>
                 </div>
                </div>
