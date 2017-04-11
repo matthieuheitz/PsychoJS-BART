@@ -223,7 +223,7 @@ function paddedDateHMS(date) {
 
 function appendBalloonDataToIndividualBuffer() {
 	// Data regarding one balloon
-	balloondata2send += pID + ",";
+	balloondata2send += pad(pID,3) + ",";
 	balloondata2send += trialIndex + ",";
 	balloondata2send += maxRand + ",";
 	balloondata2send += maxPumps + ",";
@@ -252,7 +252,7 @@ function prepareOverallDataToSend() {
 		averageNumPumpsForNonExplodedBalloons = 0; // replace NaN
 	}
 
-	overalldata2send += pID + ",";
+	overalldata2send += pad(pID,3) + ",";
 	overalldata2send += paddedDateDMY(date_game_start) + ",";
 	overalldata2send += paddedDateHMS(date_game_start) + ",";
 	overalldata2send += paddedDateHMS(date_game_end) + ",";
