@@ -161,6 +161,18 @@
         </div>
       </div>
 
+      <!-- Authentication process -->
+      <?php
+      session_start();
+      $csrfToken = md5(uniqid(mt_rand(),true)); // Token generation updated, as suggested by The Rook. Thanks!
+      echo $csrfToken;
+      $_SESSION['csrfToken'] = $token;
+      ?>
+
+      <form action="formHandler.php">
+         <input type="hidden" name="csrfKey" value="<?php echo $csrfToken ?>" />
+      </form>
+
     </div>
     </body>
   </html>

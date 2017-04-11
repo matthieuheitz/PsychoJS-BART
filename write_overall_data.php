@@ -4,6 +4,11 @@
 $dir = 'data';
 $filenameBase = 'overall_data';
 
+session_start();
+if($_POST['csrfKey'] != $_SESSION['csrfKey']) {
+	die("Unauthorized source!");
+}
+
 $data = $_POST["data"];
 $dataArray = explode(',', $data);
 $pID = $dataArray[0];
