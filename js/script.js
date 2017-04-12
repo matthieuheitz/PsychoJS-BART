@@ -127,8 +127,8 @@ function updateGameUI() {
 	image.style.width = 'auto';
 	image.style.height = Math.round( 2.0/3.0 * screen.height * (5 + numPumps) / (5.0 + 128.0)) +'px';
 	// document.getElementById("earning_by_pump").innerHTML = "Max pumps = " + maxPumps + ", numPumps = " + numPumps;
-	document.getElementById("game_total_current_earning").innerHTML = "Total earned : $" + totalcurrentEarning;
-	document.getElementById("game_last_balloon_earning").innerHTML = "Last balloon : $" + lastBalloonEarning;
+	document.getElementById("game_total_current_earning").innerHTML = "Total earned : $" + totalcurrentEarning.toFixed(2);
+	document.getElementById("game_last_balloon_earning").innerHTML = "Last balloon : $" + lastBalloonEarning.toFixed(2);
 }
 
 function buttonClickedPumpBalloon() {
@@ -165,9 +165,9 @@ function balloonFinished() {
 	totalNumPumps += numPumps;
 	if(!balloonExploded) {
 		totalNumPumpsForNonExplodedBalloons += numPumps;
-		alert("You have earned $" + currentBalloonEarning + " total for this balloon.");
+		alert("You have earned $" + currentBalloonEarning.toFixed(2) + " total for this balloon.");
 	} else {
-		alert("The balloon exploded ! You have earned $" + currentBalloonEarning + " total for this balloon.");
+		alert("The balloon exploded ! You have earned $" + currentBalloonEarning.toFixed(2) + " total for this balloon.");
 	}
 	appendBalloonDataToIndividualBuffer();
 
@@ -338,7 +338,7 @@ function displayPart4() {
 	document.getElementById("game").style.display = 'block';
 	document.getElementById("thankYou").style.display = 'none';
 
-	document.getElementById("game_final_earning").innerHTML = "You have banked $" + totalFinalEarning + " overall in the game."
+	document.getElementById("game_final_earning").innerHTML = "You have banked $" + totalFinalEarning.toFixed(2) + " overall in the game."
 	document.getElementById("game_balloon").style.display = 'none';
 	document.getElementById("game_final_screen").style.display = 'block';
 }
