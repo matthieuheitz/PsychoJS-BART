@@ -109,7 +109,7 @@ function buttonClickedSendID() {
 	if(pID == -1)
 	{
 		pID = enteredpID;
-		document.getElementById("enterID").innerHTML = "Please re-enter your ID number for verification:"
+		document.getElementById("enterID").innerHTML = "Please re-enter your ID number to confirm:"
 		document.getElementById("id_number").value = "";
 	} else if(enteredpID == pID) {
 		// If ID is valid, go to next part
