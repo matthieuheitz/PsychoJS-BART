@@ -262,6 +262,7 @@ function prepareOverallDataToSend() {
 	overalldata2send += paddedDateHMS(date_game_end) + ",";
 	overalldata2send += taskCompleted + ",";
 	overalldata2send += numBalloonsCompleted + ",";
+	overalldata2send += totalFinalEarning.toFixed(2) + ",";
 	overalldata2send += totalNumPumps + ",";
 	overalldata2send += averageNumPumps.toFixed(3) + ",";
 	overalldata2send += totalExplodedBalloons + ",";
