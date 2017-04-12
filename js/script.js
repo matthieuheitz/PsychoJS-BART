@@ -169,13 +169,13 @@ function buttonClickedCollectMoney() {
 	}
 
 	totalcurrentEarning += currentBalloonEarning;
-	lastBalloonEarning = currentBalloonEarning;
 	balloonFinished();
 }
 
 function balloonFinished() {
 	date_balloon_end = new Date();
 
+	lastBalloonEarning = currentBalloonEarning;
 	numBalloonsCompleted++;
 	totalNumPumps += numPumps;
 	if(!balloonExploded) {
