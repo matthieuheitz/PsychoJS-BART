@@ -1,6 +1,6 @@
 // Configure the game
 
-var pID = 0;
+var pID = -1;
 // Earnings
 var totalcurrentEarning = 0;
 var totalFinalEarning = 0;
@@ -100,15 +100,26 @@ function setBalloonInitialState() {
 
 function buttonClickedSendID() {
 
-	pID = document.getElementById("id_number").value;
+	enteredpID = document.getElementById("id_number").value;
 	// If ID entered is invalid
-	if( pID == "" || pID < 0 || pID > 300 || isNaN(pID)) {
+	if( enteredpID == "" || enteredpID < 0 || enteredpID > 300 || isNaN(enteredpID)) {
 		alert("Incorrect ID number. Please re-enter it.");
+		return;
 	}
-	// If ID is valid, go to next part
-	else {
+	if(pID == -1)
+	{
+		pID = enteredpID;
+		document.getElementById("enterID").innerHTML = "Please re-enter your ID number for verification:"
+		document.getElementById("id_number").value = "";
+	} else if(enteredpID == pID) {
+		// If ID is valid, go to next part
 		date_experience_start = new Date();
 		displayPart2();
+	} else {
+		alert("ID numbers do not match. Please verify your ID number.");
+		pID = -1;
+		document.getElementById("enterID").innerHTML = "Please enter your ID number:"
+		document.getElementById("id_number").value = "";
 	}
 }
 
