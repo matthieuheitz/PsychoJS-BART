@@ -112,13 +112,17 @@ function buttonClickedSendID() {
 	}
 }
 
-function buttonClickedStartGame() {
+function startNewBalloon() {
 	trialIndex++;
 	// Start the balloon game
 	setBalloonInitialState();
-	date_game_start = new Date();
 
 	displayPart3();
+}
+
+function buttonClickedStartGame() {
+	date_game_start = new Date();
+	startNewBalloon();
 }
 
 function updateGameUI() {
@@ -172,7 +176,7 @@ function balloonFinished() {
 	appendBalloonDataToIndividualBuffer();
 
 	if(trialIndex < numOfTrials) {
-		buttonClickedStartGame();
+		startNewBalloon();
 	}
 	else {
 		finishGame();
