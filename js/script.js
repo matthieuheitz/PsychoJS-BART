@@ -233,8 +233,8 @@ function appendBalloonDataToIndividualBuffer() {
 	balloondata2send += maxPumps + ",";
 	balloondata2send += numPumps + ",";
 	balloondata2send += balloonExploded + ",";
-	balloondata2send += currentBalloonEarning + ",";
-	balloondata2send += totalcurrentEarning + ",";
+	balloondata2send += currentBalloonEarning.toFixed(2) + ",";
+	balloondata2send += totalcurrentEarning.toFixed(2) + ",";
 
 	var time_totalOnBalloon = dateDifferenceMinSecMil(date_balloon_start,date_balloon_end);
 	balloondata2send += time_totalOnBalloon + ",";
@@ -263,11 +263,11 @@ function prepareOverallDataToSend() {
 	overalldata2send += taskCompleted + ",";
 	overalldata2send += numBalloonsCompleted + ",";
 	overalldata2send += totalNumPumps + ",";
-	overalldata2send += averageNumPumps + ",";
+	overalldata2send += averageNumPumps.toFixed(3) + ",";
 	overalldata2send += totalExplodedBalloons + ",";
 	overalldata2send += numNonExplodedBalloonsCompleted + ",";
 	overalldata2send += totalNumPumpsForNonExplodedBalloons + ",";
-	overalldata2send += averageNumPumpsForNonExplodedBalloons + "\n";
+	overalldata2send += averageNumPumpsForNonExplodedBalloons.toFixed(3) + "\n";
 
 }
 
