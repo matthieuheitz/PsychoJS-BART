@@ -6,7 +6,7 @@ var totalcurrentEarning = 0;
 var totalFinalEarning = 0;
 var currentBalloonEarning = 0;
 var lastBalloonEarning = 0;
-var earningPerPump = 0.75;
+var earningPerPump = 0.05;
 // Random process
 var numOfTrialTypes = 3;
 var maxRandList = [8, 32, 128];
