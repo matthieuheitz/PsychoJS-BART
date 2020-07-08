@@ -240,8 +240,9 @@
               balloonValMsg.frameNStart = frameN;  // exact frame index
               balloonValMsg.setAutoDraw(true);
             }
+
             if (balloonValMsg.status == STARTED){ // only update if being drawn
-              balloonValMsg.setText(u"This balloon value:\n %.2f" %thisBalloonEarnings);
+              balloonValMsg.setText("This balloon value:\n %.2f" %thisBalloonEarnings);
             }
             
             // *bankedMsg* updates
@@ -252,7 +253,7 @@
               bankedMsg.setAutoDraw(true);
             }
             if (bankedMsg.status == STARTED){ // only update if being drawn
-              bankedMsg.setText(u"You have banked:\n %.2f" %bankedEarnings);
+              bankedMsg.setText("You have banked:\n %.2f" %bankedEarnings);
             }
             
             // *bankButton* updates
@@ -322,7 +323,7 @@
             finalScoreClock.reset(); // clock
             frameN = -1;
             // update component parameters for each repeat
-            finalScore_2.setText(u"Well done! You banked a total of\n %2.f" %bankedEarnings);
+            finalScore_2.setText("Well done! You banked a total of\n %2.f" %bankedEarnings);
             doneKey = new psychoJS.event.BuilderKeyResponse();
             // keep track of which components have finished
             finalScoreComponents = [];
